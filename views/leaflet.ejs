@@ -6,7 +6,10 @@
     const listLieux = [
         {name:"Fontainebleau", positionX:48.4021, positionY:2.6995},
         {name:"Malmaison", positionX:48.8708, positionY:2.1668},
-        {name:"Saint-Germain-en-Laye", positionX:48.8980, positionY:2.0960}
+        {name:"Saint-Germain-en-Laye", positionX:48.8980, positionY:2.0960},
+        {name:"Écouen", positionX:49.0172, positionY:2.3789},
+        {name:"Versailles", positionX:48.8049, positionY:2.1204},
+        {name:"Chantilly", positionX:49.1938, positionY:2.4852},
     ]
     let layerGroup = L.layerGroup().addTo(map);
 
@@ -16,11 +19,13 @@
     }).addTo(map);
 
     for (let i = 0; i < listLieux.length; i++) {
-        /* newMarker = new L.circle([listLieux[i].positionX, listLieux[i].positionY], {
-                        draggable: false,
-                        autoPan: true,
-                        shadowSize: [0, 0],
-        }); */
+        newMarker = new L.circle([listLieux[i].positionX, listLieux[i].positionY], {
+            draggable: false,
+            autoPan: true,
+
+            shadowSize: [0, 0],
+        });
+        layerGroup.addLayer(newMarker);
         /*var iconUrl = 'data:image/svg+xml;base64,' + btoa(svg);
 
         var icon = L.icon( {
@@ -28,18 +33,21 @@
         } ); */
 
     var castelIcon = L.icon({
-         iconUrl: './images/castelodotempo.svg',
-         iconAnchor:   [listLieux[i].positionX, listLieux[i].positionY], // point of the icon which will correspond to marker's location  // the same for the shadow // point from which the popup should open relative to the iconAnchor
-         popupAnchor:   [listLieux[i].positionX, listLieux[i].positionY], // point of the icon which will correspond to marker's location  // the same for the shadow // point from which the popup should open relative to the iconAnchor
-     });
+        iconUrl: './images/castelodotempo.svg',
+        iconSize:     [25, 80], // size of the icon
+        iconAnchor:   [listLieux[i].positionY+10, listLieux[i].positionX], // point of the icon which will correspond to marker's location
+    });
+    L.marker([listLieux[i].positionX, listLieux[i].positionY], {icon: castelIcon}).addTo(map);
 
-     newMarker = new L.marker([listLieux[i].positionX, listLieux[i].positionY], {
+
+
+     /*newMarker = new L.marker([listLieux[i].positionX, listLieux[i].positionY], {
          draggable: false,
          autoPan: true,
          shadowSize: [0, 0],
          icon: castelIcon
      });
-     layerGroup.addLayer(newMarker);
+     layerGroup.addLayer(newMarker);*/
 
      /* L.marker([listLieux[i].positionX, listLieux[i].positionY], {icon: castelIcon}).addTo(map); */
     }
