@@ -3,18 +3,24 @@ const express = require('express');
 const http = require('http');
 const logger = require('morgan');
 const path = require('path');
-const router = require('./routes/index');
 const { auth } = require('express-openid-connect');
+const db = require("./database/db");
+const router = require('./routes/index');
+const {query} = require("./database/db");
+const app = express();
+const bodyParser = require('body-parser');
+
+db.up()
 
 dotenv.load();
 
-const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
 
 const config = {
