@@ -53,7 +53,7 @@ function up() {
 
     const sql = fs.readFileSync('./database/' + process.env.DB_NAME + '.sql').toString().split(';');
 
-    let createDB = false;
+    let createDB = process.env.DB_RESET;
 
     database.connect((err) => {
         if (err) {

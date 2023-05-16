@@ -2,10 +2,9 @@ var router = require('express').Router();
 const {requiresAuth} = require('express-openid-connect');
 const db = require("../database/db");
 
-
 router.get('/', function (req, res, next) {
     db.query('SELECT * FROM lieux').then((data) => {
-        res.render('index', {
+        res.render('map/index', {
             data: data,
             title: 'HEEREWIGO',
             isAuthenticated: req.oidc.isAuthenticated()
@@ -14,30 +13,20 @@ router.get('/', function (req, res, next) {
         next(err);
     });
 });
+
 router.get('/profile', requiresAuth(), function (req, res, next) {
-    res.render('profile', {
+    res.render('profile/index', {
         userProfile: JSON.stringify(req.oidc.user, null, 2),
         title: 'Profile page'
     });
 });
 
-router.get('/test', function (req, res, next) {
-    db.query('SELECT * FROM lieux').then((data) => {
-        res.render('test', {
-            data: data,
-            title: 'test'
-        });
-    }).catch((err) => {
-        next(err);
-    });
-});
-
-// Affiche la page du formulaire d'ajout de lieu
+// view to form for adding place
 router.get('/addPlace',  requiresAuth(), (req, res) => {
-    res.render('addPlace', { title: 'Ajouter un lieu' });
+    res.render('place/add', { title: 'Ajouter un lieu' });
 });
 
-// Traite la soumission du formulaire d'ajout de lieu
+// adding place
 router.post('/addPlace', async (req, res, next) => {
     try {
         const { name, positionx, positiony } = await req.body;
@@ -51,7 +40,7 @@ router.post('/addPlace', async (req, res, next) => {
 
 // for later
 router.get('/admin', function (req, res, next) {
-    res.render('admin', {
+    res.render('admin/index', {
         title: 'admin'
     });
 });
