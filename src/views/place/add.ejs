@@ -1,22 +1,18 @@
-<%- include('../partials/header') -%>
+<div id="addPlaceForm" class="hidden absolute flex w-1/4" >
+    <form action="/addPlace" method="post" class="h-full flex flex-col justify-center">
+        <div class="flex flex-col items-center my-5 mx-5">
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="flex flex-col items-center my-5 mx-5">
+            <label for="positionx">position_x</label>
+            <input type="number" step="any" id="positionx" name="positionx" value="">
+        </div>
+        <div class="flex flex-col items-center my-5 mx-5">
+            <label for="positiony">position_y</label>
+            <input type="number" step="any" id="positiony" name="positiony" value="">
+        </div>
+        <button class="flex flex-col items-center my-5 mx-5 bg-black text-white" type="submit">Ajouter</button>
+    </form>
 
-<h1>Ajouter un lieu</h1>
-
-<form action="/addPlace" method="post">
-    <div>
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name">
-    </div>
-    <div>
-        <label for="positionx">position_x:</label>
-        <input type="number" step="any" id="positionx" name="positionx">
-    </div>
-    <div>
-        <label for="positiony">position_y:</label>
-        <input type="number" step="any" id="positiony" name="positiony">
-    </div>
-    <button type="submit">Ajouter</button>
-</form>
-
-<a href="/">Retour</a>
-<%- include('../partials/footer') -%>
+</div>
