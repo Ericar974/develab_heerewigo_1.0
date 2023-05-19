@@ -1,7 +1,10 @@
 const db = require("../database/db");
 
 function index(req, res) {
-    res.render('place/add', { title: 'Ajouter un lieu' });
+    let lat = req.query.lat;
+    let lng = req.query.lng;
+
+    res.render('place/add', { title: 'Ajouter un lieu', lat: lat, lng:lng});
 }
 
 async function add(req, res, next) {

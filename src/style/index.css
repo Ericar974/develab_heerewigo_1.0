@@ -2,3 +2,18 @@
     margin: 0;
     padding: 0;
 }
+#addPlaceDiv{
+    color: white;
+    bottom: 0;
+    margin: 15px;
+    cursor: pointer;
+}
+#addPlace{
+    border: black solid 1px;
+    padding: 10px;
+}
+#addPlace:hover{
+    color: black;
+    background-color: beige;
+    opacity: 30%;
+}

@@ -1,29 +1,18 @@
 var router = require('express').Router();
 const {requiresAuth} = require('express-openid-connect');
-const db = require("../database/db");
-const profile = require("./profile")
-const place = require("./place")
-const admin = require("./admin")
+const profile = require("../Controllers/profile")
+const place = require("../Controllers/place")
+const admin = require("../Controllers/admin")
+const map = require("../Controllers/map")
 
 // GET
-router.get('/', index);
+router.get('/', map.index);
+// require connexion
 router.get('/profile', requiresAuth(), profile.index);
-router.get('/addPlace',  requiresAuth(),place.index);
-router.get('/admin', admin.index);
+router.get('/addPlace', requiresAuth(), place.index);
+router.get('/admin', requiresAuth(), admin.index);
 
 // POST
-router.post('/addPlace', place.add);
-
-function index (req, res, next) {
-    db.query('SELECT * FROM lieux').then((data) => {
-        res.render('map/index', {
-            data: data,
-            title: 'HEEREWIGO',
-            isAuthenticated: req.oidc.isAuthenticated()
-        });
-    }).catch((err) => {
-        next(err);
-    });
-}
+router.post('/addPlace', requiresAuth(), place.add);
 
 module.exports = router;

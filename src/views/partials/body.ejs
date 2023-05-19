@@ -8,20 +8,22 @@
     </div>
 
     <div class="flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
+        <div class="text-sm flex flex-col lg:flex-grow text-center">
             <% if (locals.user) { %>
-                <a href="/profile" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Profile</a>
+                <a href="/profile" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white m-1">Profile</a>
                 <a href="/logout"
-                   class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Logout</a>
-                <a href="/addPlace"
-                   class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Ajouter un lieu</a>
+                   class="block lg:inline-block lg:mt-0 text-gray-300 hover:text-white m-1">Logout</a>
                 <a href="/admin"
-                   class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Admin</a>
+                   class="block lg:inline-block lg:mt-0 text-gray-300 hover:text-white m-1">Admin</a>
             <% } else { %>
                 <a href="/login"
-                   class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Login</a>
+                   class="block lg:inline-block lg:mt-0 text-gray-300 hover:text-white m-1">Login</a>
             <% } %>
         </div>
 
+    </div>
+    <div id="addPlaceDiv"
+         class=" <% if(typeof data === "undefined" || typeof locals.user !== 'object'){ %> hidden <% } %> ">
+        <p id="addPlace">Add place</p>
     </div>
 </nav>
