@@ -5,7 +5,7 @@ docker
 
 ## SET UP :
 ### create a .env file with .env.exemple
-### docker compose build
+### docker compose up --build
 ### docker exec -it mysql-db bash
 ### mysql -u root -p
 ### ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'root';
@@ -15,4 +15,4 @@ docker
 ### start app: docker compose up --build
 ### close app: docker compose down
 
-### go on http://localhost:3000/
+### go on http://localhost:3000/ ( only 3000 port will allow login )
