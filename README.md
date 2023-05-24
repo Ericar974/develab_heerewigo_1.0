@@ -5,11 +5,11 @@ docker
 
 ## SET UP :
 ### create a .env file with .env.exemple
+### put the db file in database folder ( named heerewigo_db.sql , you will need one, found on our discord )
 ### docker compose up --build
 ### docker exec -it mysql-db bash
 ### mysql -u root -p
 ### ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'root';
-### AND FINALY put your db file the database folder ( someone need to give you one found on the discord of the project )
 
 # Start and Down :
 ### start app: docker compose up --build
