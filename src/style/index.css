@@ -17,3 +17,9 @@
     background-color: beige;
     opacity: 30%;
 }
+
+.pinsPopup h2{
+    font-size: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+}

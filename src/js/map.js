@@ -10,27 +10,32 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 for (let i = 0; i < listLieux.length; i++) {
-    newMarker = new L.circle([listLieux[i].position_x, listLieux[i].position_y], {
-        draggable: false,
-        autoPan: true,
 
-        shadowSize: [0, 0],
-    });
-    layerGroup.addLayer(newMarker);
-    /*var iconUrl = 'data:image/svg+xml;base64,' + btoa(svg);
-
-    var icon = L.icon( {
-        iconUrl: iconUrl,
-    } ); */
-
+    // Create an icon for pins
     var castelIcon = L.icon({
         iconUrl: './images/castelodotempo.svg',
         iconSize:     [25, 80], // size of the icon
         iconAnchor:   [listLieux[i].position_y+10, listLieux[i].position_x], // point of the icon which will correspond to marker's location
     });
-    L.marker([listLieux[i].position_x, listLieux[i].position_y], {icon: castelIcon}).addTo(map);
+    let pins = L.marker([listLieux[i].position_x, listLieux[i].position_y], {icon: castelIcon});
 
-// add place on click
+    // Create a popup when click on a pin
+    let popupContent = `<div class="pinsPopup">
+                            <img src="https://www.fontainebleau-tourisme.com/wp-content/uploads/2023/02/Escalier-Thibaut-Chapotot.jpg" alt="blas">
+                            <h2> ${ listLieux[i].name } </h2>
+                            <p>Une description du lieu à visiter</p>
+                            <p>
+                                Curabitur rhoncus interdum metus quis hendrerit. 
+                                In vel nisl eu augue posuere lobortis et in ante. 
+                                Integer nulla purus, imperdiet in semper ut, luctus sed elit. 
+                                Proin tincidunt neque a tortor dapibus, at malesuada lorem ornare.
+                            </p>
+                        </div>`
+
+    pins.bindPopup(popupContent);
+    pins.addTo(map);
+
+    // add place on click
     let addPlaceForm = document.querySelector('#addPlaceForm')
     let positionx = document.querySelector('#positionx')
     let positiony = document.querySelector('#positiony')
@@ -49,48 +54,23 @@ for (let i = 0; i < listLieux.length; i++) {
         }
     }
 
-
-
-        map.on('click', function(e) {
-            if(canAddPlace){
-                if (temporaryMarker) {
-                    // Supprime l'ancien marqueur temporaire s'il existe
-                    map.removeLayer(temporaryMarker);
-                }
-                // Create a temporary marker at the clicked location
-                temporaryMarker = L.marker(e.latlng);
-
-                positionx.value = e.latlng.lat;
-                positiony.value = e.latlng.lng;
-
-                // Add the temporary marker to the map
-                temporaryMarker.addTo(map);
-
+    // Create a temporary pin where the user cliqued on the map
+    map.on('click', function(e) {
+        if(canAddPlace){
+            if (temporaryMarker) {
+                // Supprime l'ancien marqueur temporaire s'il existe
+                map.removeLayer(temporaryMarker);
             }
+            // Create a temporary marker at the clicked location
+            temporaryMarker = L.marker(e.latlng);
 
-        });
+            positionx.value = e.latlng.lat;
+            positiony.value = e.latlng.lng;
 
+            // Add the temporary marker to the map
+            temporaryMarker.addTo(map);
 
+        }
 
-
-
-    /*    //
-        map.on('click', function(e) {
-            // Récupère les coordonnées du clic
-            let lat = e.latlng.lat;
-            let lng = e.latlng.lng;
-
-            // Redirige vers le formulaire avec les coordonnées pré-remplies
-            window.location.href = '/addPlace?lat=' + lat + '&lng=' + lng;
-        });*/
-
-    /*newMarker = new L.marker([listLieux[i].position_x, listLieux[i].position_y], {
-        draggable: false,
-        autoPan: true,
-        shadowSize: [0, 0],
-        icon: castelIcon
     });
-    layerGroup.addLayer(newMarker);*/
-
-    /* L.marker([listLieux[i].position_x, listLieux[i].position_y], {icon: castelIcon}).addTo(map); */
 }
