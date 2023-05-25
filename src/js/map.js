@@ -20,8 +20,15 @@ for (let i = 0; i < listLieux.length; i++) {
     let pins = L.marker([listLieux[i].position_x, listLieux[i].position_y], {icon: castelIcon});
 
     // Create a popup when click on a pin
+    let img
+    if(listLieux[i].images_id == "{}"){
+        img ="https://www.fontainebleau-tourisme.com/wp-content/uploads/2023/02/Escalier-Thibaut-Chapotot.jpg"
+    }else{
+        img = listLieux[i].images_id
+    }
+
     let popupContent = `<div class="pinsPopup">
-                            <img src="https://www.fontainebleau-tourisme.com/wp-content/uploads/2023/02/Escalier-Thibaut-Chapotot.jpg" alt="blas">
+                            <img src=${img} alt="blas">
                             <h2> ${ listLieux[i].name } </h2>
                             <p>Une description du lieu à visiter</p>
                             <p>
