@@ -65,8 +65,12 @@ function up() {
             if (err) throw err;
             if (result[0].count === 0) {
                 database.query('CREATE DATABASE ' + process.env.DB_NAME, (err, result) => {
-                    if (err) throw err;
-                    createDB = true;
+                    try{
+                        if (err) throw err;
+                    }catch(e){
+                        console.log(e)
+                        createDB = true;
+                    }
                 });
             }
         });

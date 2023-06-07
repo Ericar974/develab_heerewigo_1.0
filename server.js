@@ -29,14 +29,21 @@ const config = {
 };
 
 const port = process.env.PORT || 3000;
+const url = process.env.BASE_URL || 'http://localhost'
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
   config.baseURL = `http://localhost:${port}`;
+}else {
+  config.baseURL = process.env.BASE_URL;
 }
 
 app.use(auth(config));
 
 // Middleware to make the `user` object available for all views
 app.use(function (req, res, next) {
+  // redirect
+  if (req.headers.host === '167.172.101.15:3000') {
+    return res.redirect(301, process.env.BASE_URL + req.url);
+  }
   res.locals.user = req.oidc.user;
   next();
 });
