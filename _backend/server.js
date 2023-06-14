@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
 const express = require('express');
 const http = require('http');
 const logger = require('morgan');

@@ -5,7 +5,9 @@ services:
     container_name: mysql-db
     build:
       context: .
-      dockerfile: ./containers/mysql/DockerFile
+      dockerfile: _backend/containers/mysql/DockerFile
+    env_file:
+      - .env
     restart: always
     ports:
       - "3306:3306"
@@ -21,7 +23,9 @@ services:
     container_name: heer-app
     build:
       context: .
-      dockerfile: ./containers/node/DockerFile
+      dockerfile: _backend/containers/node/DockerFile
+    env_file:
+      - .env/
     volumes:
       - ./:/app
       - /app/node_modules # Remove this if you have pure JS dependencies
