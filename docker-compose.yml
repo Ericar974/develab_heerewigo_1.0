@@ -5,7 +5,7 @@ services:
     container_name: mysql-db
     build:
       context: .
-      dockerfile: _backend/containers/mysql/DockerFile
+      dockerfile: containers/mysql/DockerFile
     env_file:
       - .env
     restart: always
@@ -23,7 +23,7 @@ services:
     container_name: heer-app
     build:
       context: .
-      dockerfile: _backend/containers/node/DockerFile
+      dockerfile: containers/node/DockerFile
     env_file:
       - .env/
     volumes:
