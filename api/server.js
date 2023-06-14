@@ -28,9 +28,9 @@ const config = {
   auth0Logout: true
 };
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 const url = process.env.BASE_URL || 'http://localhost'
-if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
+if (!config.baseURL && !process.env.BASE_URL && process.env.PORT_API && process.env.NODE_ENV !== 'production') {
   config.baseURL = `http://localhost:${port}`;
 }else {
   config.baseURL = process.env.BASE_URL;
