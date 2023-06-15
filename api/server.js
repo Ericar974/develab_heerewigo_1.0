@@ -28,7 +28,7 @@ const config = {
   auth0Logout: true
 };
 
-const port = 3000;
+const port = process.env.PORT_API || 3000;
 const url = process.env.BASE_URL || 'http://localhost'
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT_API && process.env.NODE_ENV !== 'production') {
   config.baseURL = `http://localhost:${port}`;
@@ -70,7 +70,7 @@ app.use(function (err, req, res, next) {
 });
 
 http.createServer(app)
-  .listen(port, () => {
+  .listen(3000, () => {
     console.log(`Listening on ${config.baseURL}`);
   });
 

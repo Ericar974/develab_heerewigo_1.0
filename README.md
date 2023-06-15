@@ -7,7 +7,7 @@ docker
 ### create a .env file with .env.exemple
 ### put the db file in database folder ( named heerewigo_db.sql , you will need one, found on our discord )
 ### docker compose up --build
-### docker exec -it mysql-db bash
+### docker exec -it heer-db bash
 ### mysql -u root -p
 ### ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'root';
 

@@ -1,6 +1,6 @@
 function index(req, res, next) {
-    res.json({
-        title: 'admin'
+    res.render('index', {
+        title: 'Heerewigo api'
     });
 }
 

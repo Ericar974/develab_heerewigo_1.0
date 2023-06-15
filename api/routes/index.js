@@ -4,9 +4,12 @@ const profile = require("../Controllers/profile")
 const place = require("../Controllers/place")
 const admin = require("../Controllers/admin")
 const map = require("../Controllers/map")
+const index = require("../Controllers/index")
 
 // GET
-router.get('/', map.index);
+router.get('/', index.index)
+
+router.get('/map', map.index);
 // require connexion
 router.get('/profile', requiresAuth(), profile.index);
 router.get('/addPlace', requiresAuth(), place.index);
