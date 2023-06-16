@@ -6,9 +6,10 @@ function Home() {
     return (
         <div className="App">
             <header className="App-header">
+                <h2> PAGE 404</h2>
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                    Welcome to Heerewigo Home page
+                   Nothing crazy here
                 </p>
                 <Link to="/">Home</Link>
                 <Link to="/map">Map</Link>
