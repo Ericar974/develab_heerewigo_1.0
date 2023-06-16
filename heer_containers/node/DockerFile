@@ -1,6 +1,6 @@
 FROM node:16
 
-WORKDIR /api/app
+WORKDIR /run_api
 
 COPY api/package*.json ./
 
@@ -8,4 +8,4 @@ RUN npm install
 
 COPY api .
 
-CMD [ "npm", "run", "start.dev"]
+CMD [ "npm", "run", "dev"]
