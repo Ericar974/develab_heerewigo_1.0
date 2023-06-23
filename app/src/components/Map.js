@@ -9,7 +9,7 @@ function Map() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/map');
+                const response = await fetch('http://localhost:3001/map');
                 const responseData = await response.json();
                 setData(responseData.data);
 
