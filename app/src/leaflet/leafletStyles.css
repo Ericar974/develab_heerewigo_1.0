@@ -1,0 +1,12 @@
+@import 'leaflet/dist/leaflet.css';
+
+#pageMap{
+    display: flex;
+    flex-direction: column;
+}
+h1{
+    align-self: center;
+}
+.imgPopup{
+    width: 300px;
+}

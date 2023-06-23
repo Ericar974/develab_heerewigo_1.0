@@ -1,0 +1,14 @@
+# Étape 1 : Construction de l'application React
+FROM node:16 as build-stage
+
+WORKDIR /run_app
+
+COPY app/package*.json ./
+
+RUN npm install
+
+COPY app/ ./
+
+RUN npm run build
+
+CMD ["npm", "start"]

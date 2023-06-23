@@ -1,0 +1,16 @@
+<%- include('../partials/head') -%>
+<%- include('../partials/leaflet') -%>
+</head>
+<%- include('../partials/body') -%>
+
+<div id="map" class="flex-grow lg:h-screen h-5/6"></div>
+
+<%- include('../place/add') -%>
+
+<script>
+    let data = JSON.parse('<%- JSON.stringify(data) %>');
+</script>
+
+<script src="./js/map.js"></script>
+
+<%- include('../partials/footer') -%>

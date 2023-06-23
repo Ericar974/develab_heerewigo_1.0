@@ -1,0 +1,11 @@
+FROM node:16
+
+WORKDIR /run_api
+
+COPY api/package*.json ./
+
+RUN npm install
+
+COPY api .
+
+CMD [ "npm", "run", "dev"]
