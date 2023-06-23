@@ -28,7 +28,7 @@ services:
       - .env/
     restart: always
     ports:
-      - "${PORT_APP}:80"
+      - "${PORT_APP}:3000"
     volumes:
       - ./app:/run_app
     networks:
@@ -47,7 +47,7 @@ services:
       - /run_api/node_modules # Remove this if you have pure JS dependencies
     restart: always
     ports:
-      - "${PORT_API}:3000"
+      - "${PORT_API}:3001"
     depends_on:
       - db
     environment:
