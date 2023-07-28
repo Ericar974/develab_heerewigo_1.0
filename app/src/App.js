@@ -15,15 +15,15 @@ import { useAuth0 } from '@auth0/auth0-react';
  * @constructor
  */
 function App() {
-    const { isAuthenticated, isLoading, logout } = useAuth0();
+    const { isAuthenticated, logout } = useAuth0();
 
     const handleLogout = () => {
-        logout();
+        logout({ returnTo: window.location.origin });
     };
 
     return (
         <div>
-            {isAuthenticated ? <LoginButton/> : <button onClick={handleLogout}>Logout</button>}
+            {isAuthenticated ? <LoginButton/>: <button onClick={handleLogout}>Logout</button>}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/callback" element={<CallBack />}/>
